@@ -1,0 +1,147 @@
+:root {
+    --primary: #0f172a;
+    --secondary: #1e293b;
+    --accent: #38bdf8;
+}
+
+body {
+    background-color: var(--primary);
+    color: #f8fafc;
+    background-image: url('https://source.unsplash.com/random/1920x1080');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.skill-card {
+    transform: perspective(1000px) rotateY(0deg);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.skill-card:hover {
+    transform: perspective(1000px) rotateY(10deg) translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.project-card {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+    position: relative;
+    overflow: hidden;
+}
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(56, 189, 248, 0.1),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.project-card:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.03);
+    box-shadow: 0 25px 40px rgba(56, 189, 248, 0.1);
+}
+.project-card:hover::before {
+    left: 100%;
+}
+.project-card a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #38bdf8;
+    transition: width 0.3s ease;
+}
+.project-card a:hover::after {
+    width: 100%;
+}
+
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.floating {
+    animation: float 4s ease-in-out infinite;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+}
+/* Mobile Menu */
+#mobileMenu {
+    transition: all 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+#mobileMenu.hidden {
+    max-height: 0 !important;
+    opacity: 0;
+}
+
+#mobileMenu:not(.hidden) {
+    max-height: 500px;
+    opacity: 1;
+}
+
+/* Menu button animation */
+#menuBtn.active svg {
+    transform: rotate(90deg);
+}
+
+#menuBtn svg {
+    transition: transform 0.3s ease-in-out;
+}
+
+@keyframes ring {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    75% { transform: rotate(-15deg); }
+}
+
+.animate-ring {
+    animation: ring 1.5s ease-in-out infinite;
+}
+
+.social-icon {
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+}
